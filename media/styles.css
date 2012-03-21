@@ -1,0 +1,51 @@
+* { font-family: sans-serif; }
+body { margin-bottom: 100px; }
+
+ul {
+    list-style: none;
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    clear: both;
+    padding-top: 20px;
+}
+
+div.name { float: left; }
+div.name a { text-decoration: none; }
+div.name a, div.name a:visited { color: blue; }
+div.name a.subsidy { font-weight: bold; }
+div.name a.debt { color: red; }
+
+div.checkboxes {
+    float: right;
+    margin-right: 10px;
+}
+div.checkboxes > div {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    float: left;
+    margin-left: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+div.checkboxes > div.checked {
+    background-color: #f70;
+}
+
+hr { clear: both; margin: 40px; padding: 0; }
+
+#participant_form th {
+    text-align: right;
+    vertical-align: bottom;
+}
+
+#participant_form .errorlist {
+    color: red;
+    font-size: 0.8em;
+}

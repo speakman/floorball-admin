@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block label %}{{ header }}{% endblock %}
+
+{% block content %}
+  <p><a href="/">&lt; &lt; Back</a></p>
+  <form method="POST" action="" id="participant_form">{% csrf_token %}
+    <table>
+      {{ form.as_table }}
+      <tr><td></<td><td style="text-align: right;"><input type="submit" value="Save" /></td></tr>
+    </table>
+  </form>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block label %}Home{% endblock %}
+
+{% block content %}
+  <ul>
+    <li>
+      <div>Name</div>
+      <div class="checkboxes">
+	{% for gathering in gatherings|dictsort:"date" %}
+	  <div>{{ gathering.date.day }}</div>
+	{% endfor %}
+      </div>
+    </li>
+    {% for participant in participants %}
+      <li>
+	<div class="name">
+	  <a href="{{ participant.get_absolute_url }}"
+	     class="{% if participant.age < 20 %}subsidy{% endif %} {% if not participant.has_payed %}debt{% endif %}">
+	    {{ participant.name }}
+	  </a>
+	</div>
+	<div class="checkboxes">
+	  {% for gathering in gatherings|dictsort:"date" %}
+	    <div {% if participant in gathering.participants %}class="checked"{% endif %}
+		 onclick="handleAttendanceClick($(this),{{ gathering.id }},{{ participant.id }});">
+	    </div>
+	  {% endfor %}
+	</div>
+      </li>
+    {% endfor %}
+  </ul>
+  <hr />
+  <p>
+    <a href="{% url new_participant %}">New participant...</a>
+  </p>
+  <p>
+    {% with last_gathering=gatherings|dictsort:"date"|last %}
+      {% if last_gathering.date != today %}
+	<p>Today has no gathering. <a href="{% url new_gathering %}">Create one?</a></p>
+      {% endif %}
+    {% endwith %}
+  </p>
+{% endblock %}
